@@ -1,0 +1,55 @@
+---
+title: "3PG/Q"
+author: "Lorenzo Menichetti"
+date: "10/5/2021"
+output:
+  bookdown::html_document2: default
+bibliography: ../../bibtex/library.bib
+link-citations: yes
+always_allow_html: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## The idea of 3PG/Q
+This is an attempt to connect together the 3PGmix model (@Gupta2019) with the decomposition model Q @Agren1996b, in particular its updated calibration by #ECOSPHERE REFERENCE HERE#.
+While 3PG will take care of simulating tree growth (CO2 sinks) Q will simulate decomposition processes (CO2 sources), closing the balance of the stand.
+```{r,, echo=FALSE, layout="l-page", fig.height=8, warning = FALSE}
+library(DiagrammeR)
+grViz("images/model.gv")
+```
+
+One advantage of 3PGmix is that it is already developed for simulating uneven aged and multispecies stands.
+
+
+## The Q model: main directions of future development
+The model describes the decomposition of organic matter. It has so far been used to express the fate of all organic matter in the system, usually considering one decomposing cohort each time step and describing then its fate over time.
+With the detailed inputs from 3PG we can describe separately different input sources. These are indeed likely to decompose with very similar kinetics, since decomposition kinetics seem to be rather constant and differences in different soils can be explained solely by the initial quality (@Menichetti2019), but nonetheless such assumption needs to be tested in the model both for different sites and different materials. It is possible for example that macronutrient balance (N and P) can have feedback on C decomposition. We will test if letting some key parameters of the model describing the kinetics will improve the simulation.
+Another possibility we can add when representing separated decomposing pools is that, since these pools are defined just by spatial separation, we can introduce a transport term representing the movement of C from the litter to SOC (for example leaching or bioturbation).
+
+So, summarizing the main differences this project wants to add compared to what is currently in use concerning Q:
+*different inputs will be in different pools, each with its own starting quality
+*we will test for separate kinetics for different inputs, which can be linked to nutrient status of the site and/or different inputs
+*we will introduce a transport mechanism between litter and SOM
+
+These modifications require extensive testing and studying them goes beyond the purpose of this very specific project, but we are going to set up the tools to test them in the future by designing the model from the beginning with the possibility for doing so.
+
+
+
+## Introducing 3PG
+3PG, being phisiologically based, is a rather complex model and needs many parameters (on top of fertility and climate corrections):
+```{r, echo=FALSE}
+parameters<-read.csv("../i_parameters.csv")
+knitr::kable(parameters, "pipe")
+```
+
+## Model assumptions
+
+
+## Sensitivity analysis
+
+# References
+
+<div id="refs"></div>

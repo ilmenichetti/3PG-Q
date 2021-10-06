@@ -1,0 +1,126 @@
+digraph boxes_and_circles {
+
+  # a 'graph' statement
+  graph [overlap = true, fontsize = 10]
+
+  	subgraph inputs {
+        rank="same"
+      node [shape = circle,
+        fixedsize = true,
+        width = 0.9, 
+         style=filled,color=cadetblue2] // sets as circles
+        
+        temp[label='Temp']
+        mois[label='Precip.']
+        siteID[label='Site ID']
+        fert[label='Fertility']
+        species[label='Species']
+
+        
+       node [shape = circle,
+        fixedsize = true,
+        width = 1,
+        style = "dashed, filled", 
+        fillcolor=coral1] // sets as circles
+           
+        litter[label='Litter']
+        dead[label='CWD']
+        dead_pos[label='CWD_position']
+        
+  	}
+        
+    
+    subgraph objectives {
+        node [shape = circle,
+        fixedsize = true,
+        width = 1, 
+        style=filled,color=darkorchid1] // sets as circles
+
+        biomass[label='AG Biomass']
+        SOC[label='SOC']
+      
+    }
+    
+        
+  	subgraph cluster_1 {
+		style=filled;
+		color=lightgrey;
+		
+      node [shape = circle,
+        fixedsize = true,
+        width = 1, 
+        style=filled,color=darkolivegreen2] // sets as circles
+   
+        site[label='Site']
+        trees[label='AG biomass sim']
+        weather[label='Weather']
+        CWD_sim[label='CWD sim']
+        foliage[label='Foilage sim']
+        roots[label='roots sim']
+
+     		label = "3PGmix";
+  	}
+  
+  
+  	subgraph cluster_2 {
+		style=filled;
+		color=burlywood1;
+      
+      node [shape = circle,
+        fixedsize = true,
+        width = 1, 
+        style=filled,color=darkolivegreen2] // sets as circles
+   
+        litter_sim[label='Litter sim']
+
+
+		label = "Q (CWD pool)";
+  	}
+  
+  
+    	subgraph cluster_3 {
+		style=filled;
+		color=burlywood1;
+      
+      node [shape = circle,
+        fixedsize = true,
+        width = 1, 
+        style=filled,color=darkolivegreen2] // sets as circles
+   
+        SOC_sim[label='SOC sim']
+
+
+		label = "Q (SOC pool)";
+  	}
+  
+  
+
+#3pg
+temp -> weather;
+mois -> weather;
+siteID -> fert
+species -> trees
+fert -> site
+weather -> trees
+site -> trees
+trees -> CWD_sim
+trees -> foliage
+trees -> roots
+
+#Q
+foliage -> litter_sim
+CWD_sim -> litter_sim
+roots -> SOC_sim
+dead_pos -> litter_sim
+
+#calibratuins
+litter_sim -> SOC_sim [color="darkblue", label="transport"]
+
+edge [dir="both", color="red", label="calib"]
+litter -> litter_sim
+dead -> CWD_sim
+SOC -> SOC_sim
+biomass -> trees
+
+
+}
