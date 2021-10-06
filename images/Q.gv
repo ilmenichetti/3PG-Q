@@ -1,0 +1,67 @@
+digraph boxes_and_circles {
+
+  # a 'graph' statement
+  graph [overlap = true, fontsize = 10]
+
+  	subgraph inputs {
+        rank="same"
+      node [shape = circle,
+        fixedsize = true,
+        width = 0.9, 
+         style=filled,color=cadetblue2] // sets as circles
+        
+        foliage[label='Foliage sim']
+        CWD_sim[label='CWD sim.']
+        roots[label='Roots sim']
+
+  	}
+        
+
+  
+  
+  	subgraph cluster_2 {
+		style=filled;
+		color=burlywood1;
+      
+      node [shape = circle,
+        fixedsize = true,
+        width = 1, 
+        style=filled,color=darkolivegreen2] // sets as circles
+   
+        CWD_cohort[label='CWD']
+        litter_cohort[label='Litter']
+
+
+		label = "Q (above-ground pool)";
+  	}
+  
+  
+    	subgraph cluster_3 {
+		style=filled;
+		color=burlywood1;
+      
+      node [shape = circle,
+        fixedsize = true,
+        width = 1, 
+        style=filled,color=darkolivegreen2] // sets as circles
+   
+   
+        hiSOC[label='light SOC']
+        lowSOC[label='heavy SOC']
+
+		label = "Q (below-ground pool)";
+  	}
+  
+  
+
+
+#Q
+foliage -> litter_cohort
+CWD_sim -> CWD_cohort
+roots -> lowSOC
+
+litter_cohort -> hiSOC [color="blue", label="transport"]
+
+
+
+}

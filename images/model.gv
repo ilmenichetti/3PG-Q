@@ -114,7 +114,7 @@ roots -> SOC_sim
 dead_pos -> litter_sim
 
 #calibratuins
-litter_sim -> SOC_sim [color="darkblue", label="transport"]
+litter_sim -> SOC_sim [color="blue", label="transport"]
 
 edge [dir="both", color="red", label="calib"]
 litter -> litter_sim

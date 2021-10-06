@@ -36,6 +36,14 @@ So, summarizing the main differences this project wants to add compared to what 
 
 These modifications require extensive testing and studying them goes beyond the purpose of this very specific project, but we are going to set up the tools to test them in the future by designing the model from the beginning with the possibility for doing so.
 
+The model could be used to simulate separate "pools" (with a different meaning than what commonly intended with compartmental SOC models, since here they do not denote different chemical qualities nor any different in recalcitrance) defined by their position. Each of them is going to be defined by a different initial input quality, due to the different originating material. The originating material comes from the 3PG simulation.
+We can also test the possibility that even the kinetic terms, for example microbial growth, differ, and the initial assumption will be that these terms might differ between above-ground C and below-ground C due to different environments. This hypothesis will be tested and eventually the model will be simplified to represent only different cohorts if this degree of complexity will not be required.
+The only topological reference between the "pools"
+
+```{r,, echo=FALSE, layout="l-page", fig.height=4, warning = FALSE}
+library(DiagrammeR)
+grViz("images/Q.gv")
+```
 
 
 ## Introducing 3PG
