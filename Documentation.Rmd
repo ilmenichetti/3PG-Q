@@ -16,7 +16,7 @@ knitr::opts_chunk$set(echo = TRUE)
 # The idea of 3PG/Q
 This is an attempt to connect together the 3PGmix model [@Gupta2019] with the decomposition model Q [@Agren1996b], in particular its updated calibration by #ECOSPHERE REFERENCE HERE#.
 While 3PG will take care of simulating tree growth (CO2 sinks) Q will simulate decomposition processes (CO2 sources), closing the balance of the stand.
-```{r,, echo=FALSE, layout="l-page", fig.height=8, warning = FALSE}
+```{r,, echo=FALSE, layout="l-page", fig.height=8, warning = FALSE, fig.cap = "A simplified diagram of the overall modeling approach"}
 library(DiagrammeR)
 grViz("images/model.gv")
 ```
@@ -40,7 +40,7 @@ The model could be used to simulate separate "pools" (with a different meaning t
 We can also test the possibility that even the kinetic terms, for example microbial growth, differ, and the initial assumption will be that these terms might differ between above-ground C and below-ground C due to different environments. This hypothesis will be tested and eventually the model will be simplified to represent only different cohorts if this degree of complexity will not be required.
 The only topological reference between the "pools"
 
-```{r,, echo=FALSE, layout="l-page", fig.height=4, warning = FALSE}
+```{r,, echo=FALSE, layout="l-page", fig.height=4, warning = FALSE, fig.cap = "A simplified diagram of a possible division of the Q cohorts. Different cohorts are all described by different initial qualities, but the two boxes are also possibly described by different kinetic parameters"}
 library(DiagrammeR)
 grViz("images/Q.gv")
 ```
