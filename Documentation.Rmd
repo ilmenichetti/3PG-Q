@@ -14,13 +14,12 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 # The idea of 3PG/Q
-This is an attempt to connect together the 3PGmix model [@Gupta2019] with the decomposition model Q [@Agren1996b], in particular its updated calibration by #ECOSPHERE REFERENCE HERE#.
-While 3PG will take care of simulating tree growth (CO2 sinks) Q will simulate decomposition processes (CO2 sources), closing the balance of the stand.
+This is an attempt to connect together the 3PGmix model, a well established tree growth model existing now in several branches described for example in the review by @Gupta2019, and in particular [3PGmix](https://sites.google.com/site/davidforresterssite/home/projects/3PGmix) with the decomposition model Q [@Agren1996b], in particular its updated calibration by #ECOSPHERE REFERENCE HERE#.
+While 3PG will take care of simulating tree growth (CO2 sinks) Q will simulate decomposition processes (CO2 sources), closing the balance of the stand. A model such 3PG can consider interactions between trees and it is therefore suitable to describe stands more complex than uniform age and species, and it can therefore offer many possibilities for application in current century forestry.
 ```{r,, echo=FALSE, layout="l-page", fig.height=8, warning = FALSE, fig.cap = "A simplified diagram of the overall modeling approach"}
 library(DiagrammeR)
 grViz("images/model.gv")
 ```
-
 One advantage of 3PGmix is that it is already developed for simulating uneven aged and multispecies stands.
 
 
