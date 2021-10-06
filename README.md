@@ -2,7 +2,7 @@
 Study about combining the 3PGmix growth model with the decomposition model Q.
 
 
-Link to the introductory documentation to the project <a href="https://github.com/ilmenichetti/3PG-Q/blob/main/Documentation.html">here</a>.
+Link to the introductory documentation to the project <a href="Documentation.html">here</a>.
 
 
 
