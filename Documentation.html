@@ -1568,18 +1568,17 @@ pre code {
 </div>
 
 
-<div id="the-idea-of-3pgq" class="section level2">
-<h2><span class="header-section-number">0.1</span> The idea of 3PG/Q</h2>
-<p>This is an attempt to connect together the 3PGmix model (<span class="citation">Gupta and Sharma (<a href="#ref-Gupta2019" role="doc-biblioref">2019</a>)</span>) with the decomposition model Q <span class="citation">Ågren and Bosatta (<a href="#ref-Agren1996b" role="doc-biblioref">1996</a>)</span>, in particular its updated calibration by #ECOSPHERE REFERENCE HERE#.
+<div id="the-idea-of-3pgq" class="section level1">
+<h1><span class="header-section-number">1</span> The idea of 3PG/Q</h1>
+<p>This is an attempt to connect together the 3PGmix model <span class="citation">(Gupta and Sharma <a href="#ref-Gupta2019" role="doc-biblioref">2019</a>)</span> with the decomposition model Q <span class="citation">(Ågren and Bosatta <a href="#ref-Agren1996b" role="doc-biblioref">1996</a>)</span>, in particular its updated calibration by #ECOSPHERE REFERENCE HERE#.
 While 3PG will take care of simulating tree growth (CO2 sinks) Q will simulate decomposition processes (CO2 sources), closing the balance of the stand.</p>
-<div id="htmlwidget-4ad07e8ff81bae3d2534" style="width:672px;height:768px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-4ad07e8ff81bae3d2534">{"x":{"diagram":"digraph boxes_and_circles {\n\n  # a \"graph\" statement\n  graph [overlap = true, fontsize = 10]\n\n  \tsubgraph inputs {\n        rank=\"same\"\n      node [shape = circle,\n        fixedsize = true,\n        width = 0.9, \n         style=filled,color=cadetblue2] // sets as circles\n        \n        temp[label=\"Temp\"]\n        mois[label=\"Precip.\"]\n        siteID[label=\"Site ID\"]\n        fert[label=\"Fertility\"]\n        species[label=\"Species\"]\n\n        \n       node [shape = circle,\n        fixedsize = true,\n        width = 1,\n        style = \"dashed, filled\", \n        fillcolor=coral1] // sets as circles\n           \n        litter[label=\"Litter\"]\n        dead[label=\"CWD\"]\n        dead_pos[label=\"CWD_position\"]\n        \n  \t}\n        \n    \n    subgraph objectives {\n        node [shape = circle,\n        fixedsize = true,\n        width = 1, \n        style=filled,color=darkorchid1] // sets as circles\n\n        biomass[label=\"AG Biomass\"]\n        SOC[label=\"SOC\"]\n      \n    }\n    \n        \n  \tsubgraph cluster_1 {\n\t\tstyle=filled;\n\t\tcolor=lightgrey;\n\t\t\n      node [shape = circle,\n        fixedsize = true,\n        width = 1, \n        style=filled,color=darkolivegreen2] // sets as circles\n   \n        site[label=\"Site\"]\n        trees[label=\"AG biomass sim\"]\n        weather[label=\"Weather\"]\n        CWD_sim[label=\"CWD sim\"]\n        foliage[label=\"Foilage sim\"]\n        roots[label=\"roots sim\"]\n\n     \t\tlabel = \"3PGmix\";\n  \t}\n  \n  \n  \tsubgraph cluster_2 {\n\t\tstyle=filled;\n\t\tcolor=burlywood1;\n      \n      node [shape = circle,\n        fixedsize = true,\n        width = 1, \n        style=filled,color=darkolivegreen2] // sets as circles\n   \n        litter_sim[label=\"Litter sim\"]\n\n\n\t\tlabel = \"Q (CWD pool)\";\n  \t}\n  \n  \n    \tsubgraph cluster_3 {\n\t\tstyle=filled;\n\t\tcolor=burlywood1;\n      \n      node [shape = circle,\n        fixedsize = true,\n        width = 1, \n        style=filled,color=darkolivegreen2] // sets as circles\n   \n        SOC_sim[label=\"SOC sim\"]\n\n\n\t\tlabel = \"Q (SOC pool)\";\n  \t}\n  \n  \n\n#3pg\ntemp -> weather;\nmois -> weather;\nsiteID -> fert\nspecies -> trees\nfert -> site\nweather -> trees\nsite -> trees\ntrees -> CWD_sim\ntrees -> foliage\ntrees -> roots\n\n#Q\nfoliage -> litter_sim\nCWD_sim -> litter_sim\nroots -> SOC_sim\ndead_pos -> litter_sim\n\n#calibratuins\nlitter_sim -> SOC_sim [color=\"darkblue\", label=\"transport\"]\n\nedge [dir=\"both\", color=\"red\", label=\"calib\"]\nlitter -> litter_sim\ndead -> CWD_sim\nSOC -> SOC_sim\nbiomass -> trees\n\n\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-6597ad20cf81fd88b025" style="width:672px;height:768px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-6597ad20cf81fd88b025">{"x":{"diagram":"digraph boxes_and_circles {\n\n  # a \"graph\" statement\n  graph [overlap = true, fontsize = 10]\n\n  \tsubgraph inputs {\n        rank=\"same\"\n      node [shape = circle,\n        fixedsize = true,\n        width = 0.9, \n         style=filled,color=cadetblue2] // sets as circles\n        \n        temp[label=\"Temp\"]\n        mois[label=\"Precip.\"]\n        siteID[label=\"Site ID\"]\n        fert[label=\"Fertility\"]\n        species[label=\"Species\"]\n\n        \n       node [shape = circle,\n        fixedsize = true,\n        width = 1,\n        style = \"dashed, filled\", \n        fillcolor=coral1] // sets as circles\n           \n        litter[label=\"Litter\"]\n        dead[label=\"CWD\"]\n        dead_pos[label=\"CWD_position\"]\n        \n  \t}\n        \n    \n    subgraph objectives {\n        node [shape = circle,\n        fixedsize = true,\n        width = 1, \n        style=filled,color=darkorchid1] // sets as circles\n\n        biomass[label=\"AG Biomass\"]\n        SOC[label=\"SOC\"]\n      \n    }\n    \n        \n  \tsubgraph cluster_1 {\n\t\tstyle=filled;\n\t\tcolor=lightgrey;\n\t\t\n      node [shape = circle,\n        fixedsize = true,\n        width = 1, \n        style=filled,color=darkolivegreen2] // sets as circles\n   \n        site[label=\"Site\"]\n        trees[label=\"AG biomass sim\"]\n        weather[label=\"Weather\"]\n        CWD_sim[label=\"CWD sim\"]\n        foliage[label=\"Foilage sim\"]\n        roots[label=\"Roots sim\"]\n\n     \t\tlabel = \"3PGmix\";\n  \t}\n  \n  \n  \tsubgraph cluster_2 {\n\t\tstyle=filled;\n\t\tcolor=burlywood1;\n      \n      node [shape = circle,\n        fixedsize = true,\n        width = 1, \n        style=filled,color=darkolivegreen2] // sets as circles\n   \n        litter_sim[label=\"Litter sim\"]\n\n\n\t\tlabel = \"Q (CWD pool)\";\n  \t}\n  \n  \n    \tsubgraph cluster_3 {\n\t\tstyle=filled;\n\t\tcolor=burlywood1;\n      \n      node [shape = circle,\n        fixedsize = true,\n        width = 1, \n        style=filled,color=darkolivegreen2] // sets as circles\n   \n        SOC_sim[label=\"SOC sim\"]\n\n\n\t\tlabel = \"Q (SOC pool)\";\n  \t}\n  \n  \n\n#3pg\ntemp -> weather;\nmois -> weather;\nsiteID -> fert\nspecies -> trees\nfert -> site\nweather -> trees\nsite -> trees\ntrees -> CWD_sim\ntrees -> foliage\ntrees -> roots\n\n#Q\nfoliage -> litter_sim\nCWD_sim -> litter_sim\nroots -> SOC_sim\ndead_pos -> litter_sim\n\n#calibratuins\nlitter_sim -> SOC_sim [color=\"darkblue\", label=\"transport\"]\n\nedge [dir=\"both\", color=\"red\", label=\"calib\"]\nlitter -> litter_sim\ndead -> CWD_sim\nSOC -> SOC_sim\nbiomass -> trees\n\n\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p>One advantage of 3PGmix is that it is already developed for simulating uneven aged and multispecies stands.</p>
-</div>
 <div id="the-q-model-main-directions-of-future-development" class="section level2">
-<h2><span class="header-section-number">0.2</span> The Q model: main directions of future development</h2>
+<h2><span class="header-section-number">1.1</span> The Q model: main directions of future development</h2>
 <p>The model describes the decomposition of organic matter. It has so far been used to express the fate of all organic matter in the system, usually considering one decomposing cohort each time step and describing then its fate over time.
-With the detailed inputs from 3PG we can describe separately different input sources. These are indeed likely to decompose with very similar kinetics, since decomposition kinetics seem to be rather constant and differences in different soils can be explained solely by the initial quality (<span class="citation">Menichetti et al. (<a href="#ref-Menichetti2019" role="doc-biblioref">2019</a>)</span>), but nonetheless such assumption needs to be tested in the model both for different sites and different materials. It is possible for example that macronutrient balance (N and P) can have feedback on C decomposition. We will test if letting some key parameters of the model describing the kinetics will improve the simulation.
+With the detailed inputs from 3PG we can describe separately different input sources. These are indeed likely to decompose with very similar kinetics, since decomposition kinetics seem to be rather constant and differences in different soils can be explained solely by the initial quality <span class="citation">(Menichetti et al. <a href="#ref-Menichetti2019" role="doc-biblioref">2019</a>)</span>, but nonetheless such assumption needs to be tested in the model both for different sites and different materials. It is possible for example that macronutrient balance (N and P) can have feedback on C decomposition. We will test if letting some key parameters of the model describing the kinetics will improve the simulation.
 Another possibility we can add when representing separated decomposing pools is that, since these pools are defined just by spatial separation, we can introduce a transport term representing the movement of C from the litter to SOC (for example leaching or bioturbation).</p>
 <p>So, summarizing the main differences this project wants to add compared to what is currently in use concerning Q:
 <em>different inputs will be in different pools, each with its own starting quality
@@ -1588,8 +1587,8 @@ Another possibility we can add when representing separated decomposing pools is 
 <p>These modifications require extensive testing and studying them goes beyond the purpose of this very specific project, but we are going to set up the tools to test them in the future by designing the model from the beginning with the possibility for doing so.</p>
 </div>
 <div id="introducing-3pg" class="section level2">
-<h2><span class="header-section-number">0.3</span> Introducing 3PG</h2>
-<p>3PG, being phisiologically based, is a rather complex model and needs many parameters (on top of fertility and climate corrections):</p>
+<h2><span class="header-section-number">1.2</span> Introducing 3PG</h2>
+<p>3PG, being physiologically based, is a rather complex model and needs many parameters (on top of fertility and climate corrections):</p>
 <table style="width:100%;">
 <colgroup>
 <col width="2%"></col>
@@ -2185,20 +2184,51 @@ Another possibility we can add when representing separated decomposing pools is 
 </tbody>
 </table>
 </div>
-<div id="model-assumptions" class="section level2">
-<h2><span class="header-section-number">0.4</span> Model assumptions</h2>
-</div>
 <div id="sensitivity-analysis" class="section level2">
-<h2><span class="header-section-number">0.5</span> Sensitivity analysis</h2>
+<h2><span class="header-section-number">1.3</span> Sensitivity analysis</h2>
+<p>The term “sensitivity analysis” is rather generic. In general it can refer either to the analysis of the impact of model parameters on the model predictions, or on the error of such predictions relatively to some dataset.
+The sensitivity analysis we will employ is going to be based on the latter aspect. We will rely on the Hornberger-Spear-Young (HSY) sensitivity analysis as described in <span class="citation">Beven (<a href="#ref-Beven2008a" role="doc-biblioref">2008</a>)</span>, and we will consider the sensitivity of the error in predictions (defined as a fitness measurement) across the model parameter space.
+For this initial model development phase we will base the sensitivity analysis on relatively uniform sites, so even aged and monospecific. These time series are easily available and we can rely therefore on more data points for the initial model definition.
+The sensitivity analysis will be the first step of model calibration, and we will use it to define which parameters to focus on.</p>
+<div id="sites-for-sensitivity-analysis-and-model-calibration" class="section level3">
+<h3><span class="header-section-number">1.3.1</span> Sites for sensitivity analysis and model calibration</h3>
+</div>
+</div>
+<div id="model-calibration" class="section level2">
+<h2><span class="header-section-number">1.4</span> Model calibration</h2>
+</div>
+</div>
+<div id="fertility" class="section level1">
+<h1><span class="header-section-number">2</span> Fertility</h1>
+<p>One of the key concepts in modeling forest stands is site ferility. Sweden is relying on what is called Site Index (SI) <span class="citation">(Hägglund and Lundmark <a href="#ref-Hagglund1977" role="doc-biblioref">1977</a>)</span>. This indicator is based on dominant height at a certain age (H100 ) and is determined empirically according to a dominant height curve, so based on actual productivity. Even if this index has been developed for uniform stands, it nevertheless offers a relatively good estimate of site fertility and a vast literature and data exist in this form. It is therefore important to develop a model able to utilize directly these data.
+The fertility term in 3PG is a re-scaling of physiological tree functions and it has been determined according to various methodologies. In this initial model development phase we will develop a conversion between the two indexes by first calibrating the model on known sites, letting fertility be a part of the calibration, together with other parameters. We will obtain a calibration specific for each of the available forest sites, each of which will be associated with an already determined SI. We will then be able to study the relationship between 3PG fertility and SI, and develop a function to link the two (hopefully linear, but we can develop more advanced functions if needed).</p>
+<div id="future-developments" class="section level2">
+<h2><span class="header-section-number">2.1</span> Future developments</h2>
+</div>
+</div>
+<div id="n-interactions" class="section level1">
+<h1><span class="header-section-number">3</span> N interactions</h1>
+<p>Including N feedback on site fertility is going to represent an important tool for management. To do so we will (in future projects) add in the decomposition model Q the representation of N. We will then recalibrate the resulting model based on time series where there have been recorded variations in the available N, either through fertilization or through plant harvest.
+This calibration should, in theory, make the model able to represent site fertility implicitly, solely as a consequence of its N balance.
+This recalibration might require some model modifications, but not necessarily.</p>
+<div id="possible-project-impacts" class="section level2">
+<h2><span class="header-section-number">3.1</span> Possible project impacts</h2>
+</div>
 </div>
 <div id="references" class="section level1">
-<h1><span class="header-section-number">1</span> References</h1>
+<h1><span class="header-section-number">4</span> References</h1>
 <div id="refs">
 <div id="ref-Agren1996b">
 <p>Ågren, Göran I, and Ernesto Bosatta. 1996. “Quality: A bridge between theory and experiment in soil organic matter studies.” <em>Oikos</em> 76 (3): 522–28. <a href="https://doi.org/10.2307/3546345">https://doi.org/10.2307/3546345</a>.</p>
 </div>
+<div id="ref-Beven2008a">
+<p>Beven, Keith J. 2008. <em>Environmental Modelling: An Uncertain Future?</em> London: Routledge.</p>
+</div>
 <div id="ref-Gupta2019">
 <p>Gupta, Rajit, and Laxmi Kant Sharma. 2019. “The process-based forest growth model 3-PG for use in forest management: A review.” <em>Ecological Modelling</em> 397 (February): 55–73. <a href="https://doi.org/10.1016/j.ecolmodel.2019.01.007">https://doi.org/10.1016/j.ecolmodel.2019.01.007</a>.</p>
+</div>
+<div id="ref-Hagglund1977">
+<p>Hägglund, Björn, and Jan-Erik Lundmark. 1977. <em>Site index estimation by means of site properties of Scots pine and Norway spruce in Sweden.</em> Vol. 138.</p>
 </div>
 <div id="ref-Menichetti2019">
 <p>Menichetti, L, L Touzot, K Elofsson, R Hyvönen, T Kätterer, and P Kjellander. 2019. “Interactions between a population of fallow deer (Dama dama), humans and crops in a managed composite temperate landscape in southern Sweden: Conflict or opportunity?” <em>PLoS ONE</em> 14 (4).</p>

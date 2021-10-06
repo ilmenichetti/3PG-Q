@@ -56,7 +56,7 @@ digraph boxes_and_circles {
         weather[label='Weather']
         CWD_sim[label='CWD sim']
         foliage[label='Foilage sim']
-        roots[label='roots sim']
+        roots[label='Roots sim']
 
      		label = "3PGmix";
   	}
