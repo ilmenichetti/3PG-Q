@@ -1,12 +1,13 @@
 ---
-title: "3PG/Q"
-author: "Lorenzo Menichetti"
-date: "10/5/2021"
+title: 3PG/Q
+author: Lorenzo Menichetti
 output:
   bookdown::html_document2: default
 bibliography: ../bibtex/library.bib
 link-citations: yes
 always_allow_html: yes
+type: Checklist
+modified: 2021-10-13T23:40:35+02:00
 ---
 
 ```{r setup, include=FALSE}
